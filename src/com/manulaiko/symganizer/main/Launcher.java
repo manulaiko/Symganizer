@@ -3,6 +3,8 @@ package com.manulaiko.symganizer.main;
 import com.manulaiko.tabitha.Console;
 import com.manulaiko.tabitha.utils.ArgumentParser;
 
+import com.manulaiko.symganizer.main.arguments.Debug;
+
 /**
  * Launcher class.
  * ===============
@@ -39,6 +41,8 @@ public class Launcher
     private static void _parseArguments(String[] args)
     {
         ArgumentParser ap = new ArgumentParser(args);
+
+        ap.add(new Debug());
 
         ap.parse();
     }
