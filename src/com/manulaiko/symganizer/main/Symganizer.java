@@ -1,7 +1,6 @@
 package com.manulaiko.symganizer.main;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +19,6 @@ public class Symganizer
     private File _library;
 
     /**
-     * Library entries.
-     */
-    private List<File> _entries = new ArrayList<>();
-
-    /**
      * Constructor.
      *
      * @param library Library to use.
@@ -40,6 +34,11 @@ public class Symganizer
     public void start()
     {
         LibraryScanner scanner = new LibraryScanner();
-        this._entries = scanner.scan(this._library);
+        List<File> entries = scanner.scan(this._library);
+
+        entries.forEach((f)->{
+            EntryProcessor processor = new EntryProcessor(f);
+            processor.process();
+        });
     }
 }
