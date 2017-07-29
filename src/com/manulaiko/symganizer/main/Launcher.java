@@ -60,8 +60,14 @@ public class Launcher
      */
     public static void start()
     {
-        if(Settings.library.getPath().equals(".")) {
-            Launcher._askForLibraryPath();
+        Launcher._askForLibraryPath();
+
+        Symganizer sym = new Symganizer(Settings.library);
+        sym.start();
+
+        Console.print("Do you want to add another library? (yes/no): ");
+        if(Console.readBoolean()) {
+            Launcher.start();
         }
     }
 
