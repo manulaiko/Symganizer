@@ -2,6 +2,9 @@ package com.manulaiko.symganizer.main;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
+
+import com.manulaiko.tabitha.Console;
 
 /**
  * Symganizer class.
@@ -33,6 +36,12 @@ public class Symganizer
      */
     public void start()
     {
+        Console.println("I'm going to create the directories where the symlinks will be stored.");
+        ContainerCreator containerCreator = new ContainerCreator();
+        Map<String, File> containers = containerCreator.start();
+
+
+        Console.println("Now I'm going to scan the library to get a list of the files/directories of it.");
         LibraryScanner scanner = new LibraryScanner();
         List<File> entries = scanner.scan(this._library);
 

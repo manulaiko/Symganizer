@@ -35,8 +35,6 @@ public class LibraryScanner
      */
     public List<File> scan(File library)
     {
-        Console.println("I'm going to scan the library to get a list of the files/directories of it.");
-
         this._scanOptions.askForSettings();
 
         Console.println("I'm going to start scanning `"+ library.getAbsolutePath() +"`, this will take a while...");
