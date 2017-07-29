@@ -93,7 +93,7 @@ public class Launcher
         Console.println("Path to library: `"+ Settings.library.getAbsolutePath() +"`");
         Console.print("Do you want to use this path as the library? (yes/no): ");
 
-        if(Console.readBoolean()) {
+        if(!Console.readBoolean()) {
             Launcher._askForLibraryPath();
         }
     }

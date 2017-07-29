@@ -56,8 +56,12 @@ public class EntryProcessor
      */
     private void _createSymlinks()
     {
-        Console.print("Enter the identifier of the directory: ");
+        Console.print("Enter the identifier of the directory (empty to skip): ");
         String name = Console.readLine();
+
+        if(name.isEmpty()) {
+            return;
+        }
 
         if(!this._containers.containsKey(name)) {
             Console.println("`"+ name +"` is not a pre-configured directory!");
@@ -69,7 +73,7 @@ public class EntryProcessor
 
         try {
             Path target = Paths.get(this._entry.getAbsolutePath());
-            Path link  = Paths.get(path.getAbsolutePath()).normalize().relativize(target);
+            Path link   = Paths.get(path.getAbsolutePath());
 
             Files.createSymbolicLink(link, target);
         } catch(IOException e) {
@@ -96,6 +100,10 @@ public class EntryProcessor
     {
         Console.print("Enter the name of the symlink (default `"+ this._entry.getName() +"`): ");
         String name = Console.readLine();
+
+        if(name.isEmpty()) {
+            name = this._entry.getName();
+        }
 
         File path = new File(container.getAbsolutePath() + File.separatorChar + name);
 

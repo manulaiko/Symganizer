@@ -1,5 +1,6 @@
 package com.manulaiko.symganizer.main.arguments;
 
+import com.manulaiko.tabitha.Console;
 import com.manulaiko.tabitha.utils.Argument;
 
 import com.manulaiko.symganizer.main.Settings;
@@ -44,5 +45,6 @@ public class Debug extends Argument
     public void handle()
     {
         Settings.debug = true;
+        Console.debug = true;
     }
 }
