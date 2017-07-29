@@ -5,6 +5,7 @@ import java.io.File;
 import com.manulaiko.tabitha.Console;
 import com.manulaiko.tabitha.utils.Argument;
 
+import com.manulaiko.symganizer.main.Launcher;
 import com.manulaiko.symganizer.main.Settings;
 
 /**
@@ -52,23 +53,15 @@ public class Library extends Argument
             return;
         }
 
-        File library = new File(super.value());
-        if(!library.exists()) {
-            Console.println("Library path does not exist!");
-            this._printUsage();
-
-            return;
-        }
-        if(!library.isDirectory()) {
-            Console.println("Library path is not a directory!");
+        if(!Launcher.checkLibraryPath(super.value())) {
             this._printUsage();
 
             return;
         }
 
-        Settings.library = library;
+        Settings.library = new File(super.value());
 
-        Console.debug("Path to library: `"+ library.getAbsolutePath() +"`");
+        Console.debug("Path to library: `"+ Settings.library.getAbsolutePath() +"`");
     }
 
     /**
