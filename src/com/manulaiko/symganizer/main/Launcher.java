@@ -4,6 +4,7 @@ import com.manulaiko.tabitha.Console;
 import com.manulaiko.tabitha.utils.ArgumentParser;
 
 import com.manulaiko.symganizer.main.arguments.Debug;
+import com.manulaiko.symganizer.main.arguments.Help;
 import com.manulaiko.symganizer.main.arguments.Library;
 
 /**
@@ -45,6 +46,7 @@ public class Launcher
 
         ap.add(new Debug());
         ap.add(new Library());
+        ap.add(new Help());
 
         ap.parse();
     }
