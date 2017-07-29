@@ -46,8 +46,10 @@ public class Symganizer
         List<File> entries = scanner.scan(this._library);
 
         entries.forEach((f)->{
-            EntryProcessor processor = new EntryProcessor(f);
+            EntryProcessor processor = new EntryProcessor(f, containers);
             processor.process();
         });
+
+        Console.println("Finished processing library `"+ this._library.getAbsolutePath() +"`!");
     }
 }
